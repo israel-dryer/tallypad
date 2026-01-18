@@ -1,2 +1,389 @@
-// For information on how to create your own theme, please refer to:
-// https://ionicframework.com/docs/theming/
+/* tallypad warm (amber) theme
+   - designed to work in both light/dark
+   - keeps surfaces neutral; uses amber as the accent
+   - avoids “warning yellow” collision by leaning amber/orange
+*/
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* -----------------------------
+       Tallypad brand tokens
+    ----------------------------- */
+    --tp-amber-700: #B45309;
+    --tp-amber-600: #D97706;
+    --tp-amber-500: #F59E0B;
+    --tp-amber-400: #FBBF24;
+    --tp-amber-200: #FDE68A;
+    --tp-amber-100: #FFEDD5;
+
+    /* -----------------------------
+       Neutral surfaces (light)
+       (slate-ish, consistent with your icon)
+    ----------------------------- */
+    --tp-bg: #F9FAFB;
+    --tp-surface: #FFFFFF;
+    --tp-surface-2: #F3F4F6;
+    --tp-surface-3: #E5E7EB;
+
+    --tp-text: #111827;
+    --tp-text-2: #374151;
+    --tp-text-3: #6B7280;
+
+    --tp-outline: #9CA3AF;
+    --tp-outline-variant: #D1D5DB;
+
+    /* ============================================================
+       Material-ish tokens (md-*)
+       ============================================================ */
+    --md-primary: var(--tp-amber-600);
+    --md-surfaceTint: var(--tp-amber-600);
+    --md-onPrimary: #FFFFFF;
+
+    --md-primaryContainer: var(--tp-amber-100);
+    --md-onPrimaryContainer: #7C2D12;
+
+    /* keep secondary/tertiary neutral so child apps can own color */
+    --md-secondary: #4B5563;
+    --md-onSecondary: #FFFFFF;
+    --md-secondaryContainer: #E5E7EB;
+    --md-onSecondaryContainer: #111827;
+
+    --md-tertiary: #6B7280;
+    --md-onTertiary: #FFFFFF;
+    --md-tertiaryContainer: #E5E7EB;
+    --md-onTertiaryContainer: #111827;
+
+    --md-error: #BA1A1A;
+    --md-onError: #FFFFFF;
+    --md-errorContainer: #FFDAD6;
+    --md-onErrorContainer: #93000A;
+
+    --md-background: var(--tp-bg);
+    --md-onBackground: var(--tp-text);
+
+    --md-surface: var(--tp-bg);
+    --md-onSurface: var(--tp-text);
+
+    --md-surfaceVariant: #E5E7EB;
+    --md-onSurfaceVariant: #374151;
+
+    --md-outline: var(--tp-outline);
+    --md-outlineVariant: var(--tp-outline-variant);
+
+    --md-shadow: #000000;
+    --md-scrim: #000000;
+
+    --md-inverseSurface: #1F2937;
+    --md-inverseOnSurface: #F9FAFB;
+    --md-inversePrimary: var(--tp-amber-400);
+
+    --md-primaryFixed: var(--tp-amber-100);
+    --md-onPrimaryFixed: #2A1608;
+    --md-primaryFixedDim: var(--tp-amber-200);
+    --md-onPrimaryFixedVariant: #7C2D12;
+
+    --md-secondaryFixed: #E5E7EB;
+    --md-onSecondaryFixed: #111827;
+    --md-secondaryFixedDim: #D1D5DB;
+    --md-onSecondaryFixedVariant: #374151;
+
+    --md-tertiaryFixed: #E5E7EB;
+    --md-onTertiaryFixed: #111827;
+    --md-tertiaryFixedDim: #D1D5DB;
+    --md-onTertiaryFixedVariant: #374151;
+
+    --md-surfaceDim: #EEF2F7;
+    --md-surfaceBright: #FFFFFF;
+    --md-surfaceContainerLowest: #FFFFFF;
+    --md-surfaceContainerLow: #F8FAFC;
+    --md-surfaceContainer: #F3F4F6;
+    --md-surfaceContainerHigh: #E5E7EB;
+    --md-surfaceContainerHighest: #D1D5DB;
+
+    /* ============================================================
+       Ionic tokens (ion-*)
+       ============================================================ */
+    --ion-color-primary: var(--tp-amber-500);
+    --ion-color-primary-rgb: 245,158,11;
+    --ion-color-primary-contrast: #000000;
+    --ion-color-primary-contrast-rgb: 0,0,0;
+    --ion-color-primary-shade: var(--tp-amber-600);
+    --ion-color-primary-tint: var(--tp-amber-400);
+
+    /* keep these neutral by default; child apps can override */
+    --ion-color-secondary: #4B5563;
+    --ion-color-secondary-rgb: 75,85,99;
+    --ion-color-secondary-contrast: #FFFFFF;
+    --ion-color-secondary-contrast-rgb: 255,255,255;
+    --ion-color-secondary-shade: #374151;
+    --ion-color-secondary-tint: #6B7280;
+
+    --ion-color-tertiary: #6B7280;
+    --ion-color-tertiary-rgb: 107,114,128;
+    --ion-color-tertiary-contrast: #FFFFFF;
+    --ion-color-tertiary-contrast-rgb: 255,255,255;
+    --ion-color-tertiary-shade: #4B5563;
+    --ion-color-tertiary-tint: #9CA3AF;
+
+    --ion-color-success: #16A34A;
+    --ion-color-success-rgb: 22,163,74;
+    --ion-color-success-contrast: #FFFFFF;
+    --ion-color-success-contrast-rgb: 255,255,255;
+    --ion-color-success-shade: #15803D;
+    --ion-color-success-tint: #22C55E;
+
+    /* Warning stays separate from brand (don’t use as primary) */
+    --ion-color-warning: #FACC15;
+    --ion-color-warning-rgb: 250,204,21;
+    --ion-color-warning-contrast: #000000;
+    --ion-color-warning-contrast-rgb: 0,0,0;
+    --ion-color-warning-shade: #EAB308;
+    --ion-color-warning-tint: #FDE047;
+
+    --ion-color-danger: #DC2626;
+    --ion-color-danger-rgb: 220,38,38;
+    --ion-color-danger-contrast: #FFFFFF;
+    --ion-color-danger-contrast-rgb: 255,255,255;
+    --ion-color-danger-shade: #B91C1C;
+    --ion-color-danger-tint: #EF4444;
+
+    --ion-color-light: #E5E7EB;
+    --ion-color-light-rgb: 229,231,235;
+    --ion-color-light-contrast: #111827;
+    --ion-color-light-contrast-rgb: 17,24,39;
+    --ion-color-light-shade: #D1D5DB;
+    --ion-color-light-tint: #F3F4F6;
+
+    --ion-color-medium: #9CA3AF;
+    --ion-color-medium-rgb: 156,163,175;
+    --ion-color-medium-contrast: #111827;
+    --ion-color-medium-contrast-rgb: 17,24,39;
+    --ion-color-medium-shade: #6B7280;
+    --ion-color-medium-tint: #D1D5DB;
+
+    --ion-color-dark: #1F2937;
+    --ion-color-dark-rgb: 31,41,55;
+    --ion-color-dark-contrast: #FFFFFF;
+    --ion-color-dark-contrast-rgb: 255,255,255;
+    --ion-color-dark-shade: #111827;
+    --ion-color-dark-tint: #374151;
+
+    /* app-level */
+    --ion-background-color: var(--tp-bg);
+    --ion-background-color-rgb: 249,250,251;
+
+    --ion-text-color: var(--tp-text);
+    --ion-text-color-rgb: 17,24,39;
+
+    --ion-item-background: var(--tp-surface);
+    --ion-border-color: var(--md-outlineVariant);
+    --ion-item-border-color: var(--md-outlineVariant);
+
+    ion-toolbar {
+      --background: var(--ion-background-color);
+    }
+
+    .md {
+      --ion-item-border-color: var(--tp-surface-2);
+      --ion-backdrop-opacity: 0.6;
+    }
+
+    .ios {
+      --ion-toolbar-segment-color-checked: var(--md-onPrimary);
+      --ion-toolbar-segment-indicator-color: var(--md-primary);
+      --ion-backdrop-opacity: 0.6;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* -----------------------------
+       Tallypad brand tokens
+    ----------------------------- */
+    --tp-amber-700: #B45309;
+    --tp-amber-600: #D97706;
+    --tp-amber-500: #F59E0B;
+    --tp-amber-400: #FBBF24;
+    --tp-amber-200: #FDE68A;
+    --tp-amber-100: #FFEDD5;
+
+    /* -----------------------------
+       Neutral surfaces (dark)
+    ----------------------------- */
+    --tp-bg: #0B1220;
+    --tp-surface: #111827;
+    --tp-surface-2: #1F2937;
+    --tp-surface-3: #374151;
+
+    --tp-text: #E5E7EB;
+    --tp-text-2: #CBD5E1;
+    --tp-text-3: #94A3B8;
+
+    --tp-outline: #6B7280;
+    --tp-outline-variant: #374151;
+
+    /* ============================================================
+       Material-ish tokens (md-*)
+       ============================================================ */
+    --md-primary: var(--tp-amber-400);
+    --md-surfaceTint: var(--tp-amber-400);
+    --md-onPrimary: #1F2937;
+
+    --md-primaryContainer: #92400E;
+    --md-onPrimaryContainer: var(--tp-amber-100);
+
+    --md-secondary: #9CA3AF;
+    --md-onSecondary: #111827;
+    --md-secondaryContainer: #374151;
+    --md-onSecondaryContainer: #E5E7EB;
+
+    --md-tertiary: #94A3B8;
+    --md-onTertiary: #111827;
+    --md-tertiaryContainer: #334155;
+    --md-onTertiaryContainer: #E5E7EB;
+
+    --md-error: #FFB4AB;
+    --md-onError: #690005;
+    --md-errorContainer: #93000A;
+    --md-onErrorContainer: #FFDAD6;
+
+    --md-background: var(--tp-bg);
+    --md-onBackground: var(--tp-text);
+
+    --md-surface: var(--tp-bg);
+    --md-onSurface: var(--tp-text);
+
+    --md-surfaceVariant: #374151;
+    --md-onSurfaceVariant: #CBD5E1;
+
+    --md-outline: var(--tp-outline);
+    --md-outlineVariant: var(--tp-outline-variant);
+
+    --md-shadow: #000000;
+    --md-scrim: #000000;
+
+    --md-inverseSurface: #E5E7EB;
+    --md-inverseOnSurface: #111827;
+    --md-inversePrimary: var(--tp-amber-600);
+
+    --md-primaryFixed: var(--tp-amber-100);
+    --md-onPrimaryFixed: #2A1608;
+    --md-primaryFixedDim: var(--tp-amber-200);
+    --md-onPrimaryFixedVariant: #7C2D12;
+
+    --md-secondaryFixed: #E5E7EB;
+    --md-onSecondaryFixed: #111827;
+    --md-secondaryFixedDim: #CBD5E1;
+    --md-onSecondaryFixedVariant: #374151;
+
+    --md-tertiaryFixed: #E5E7EB;
+    --md-onTertiaryFixed: #111827;
+    --md-tertiaryFixedDim: #CBD5E1;
+    --md-onTertiaryFixedVariant: #334155;
+
+    --md-surfaceDim: var(--tp-bg);
+    --md-surfaceBright: #1F2937;
+    --md-surfaceContainerLowest: #070B12;
+    --md-surfaceContainerLow: #0F172A;
+    --md-surfaceContainer: #111827;
+    --md-surfaceContainerHigh: #1F2937;
+    --md-surfaceContainerHighest: #374151;
+
+    /* ============================================================
+       Ionic tokens (ion-*)
+       ============================================================ */
+    --ion-color-primary: var(--tp-amber-400);
+    --ion-color-primary-rgb: 251,191,36;
+    --ion-color-primary-contrast: #1F2937;
+    --ion-color-primary-contrast-rgb: 31,41,55;
+    --ion-color-primary-shade: var(--tp-amber-600);
+    --ion-color-primary-tint: #FCD34D;
+
+    --ion-color-secondary: #9CA3AF;
+    --ion-color-secondary-rgb: 156,163,175;
+    --ion-color-secondary-contrast: #111827;
+    --ion-color-secondary-contrast-rgb: 17,24,39;
+    --ion-color-secondary-shade: #6B7280;
+    --ion-color-secondary-tint: #D1D5DB;
+
+    --ion-color-tertiary: #94A3B8;
+    --ion-color-tertiary-rgb: 148,163,184;
+    --ion-color-tertiary-contrast: #111827;
+    --ion-color-tertiary-contrast-rgb: 17,24,39;
+    --ion-color-tertiary-shade: #64748B;
+    --ion-color-tertiary-tint: #CBD5E1;
+
+    --ion-color-success: #22C55E;
+    --ion-color-success-rgb: 34,197,94;
+    --ion-color-success-contrast: #052E16;
+    --ion-color-success-contrast-rgb: 5,46,22;
+    --ion-color-success-shade: #16A34A;
+    --ion-color-success-tint: #4ADE80;
+
+    --ion-color-warning: #FACC15;
+    --ion-color-warning-rgb: 250,204,21;
+    --ion-color-warning-contrast: #000000;
+    --ion-color-warning-contrast-rgb: 0,0,0;
+    --ion-color-warning-shade: #EAB308;
+    --ion-color-warning-tint: #FDE047;
+
+    --ion-color-danger: #EF4444;
+    --ion-color-danger-rgb: 239,68,68;
+    --ion-color-danger-contrast: #FFFFFF;
+    --ion-color-danger-contrast-rgb: 255,255,255;
+    --ion-color-danger-shade: #DC2626;
+    --ion-color-danger-tint: #F87171;
+
+    --ion-color-light: var(--tp-surface-2);
+    --ion-color-light-rgb: 31,41,55;
+    --ion-color-light-contrast: #FFFFFF;
+    --ion-color-light-contrast-rgb: 255,255,255;
+    --ion-color-light-shade: #111827;
+    --ion-color-light-tint: #334155;
+
+    --ion-color-medium: var(--tp-outline);
+    --ion-color-medium-rgb: 107,114,128;
+    --ion-color-medium-contrast: #111827;
+    --ion-color-medium-contrast-rgb: 17,24,39;
+    --ion-color-medium-shade: #4B5563;
+    --ion-color-medium-tint: #9CA3AF;
+
+    --ion-color-dark: var(--tp-text);
+    --ion-color-dark-rgb: 229,231,235;
+    --ion-color-dark-contrast: #111827;
+    --ion-color-dark-contrast-rgb: 17,24,39;
+    --ion-color-dark-shade: #CBD5E1;
+    --ion-color-dark-tint: #F3F4F6;
+
+    --ion-background-color: var(--tp-bg);
+    --ion-background-color-rgb: 11,18,32;
+
+    --ion-text-color: var(--tp-text);
+    --ion-text-color-rgb: 229,231,235;
+
+    ion-toolbar {
+      --background: var(--ion-background-color);
+    }
+
+    .md {
+      --ion-item-background: var(--tp-surface);
+      --ion-border-color: var(--md-outlineVariant);
+      --ion-item-border-color: var(--tp-surface-2);
+      --ion-backdrop-opacity: 0.4;
+      --ion-toolbar-segment-color-checked: var(--md-primary);
+      --ion-toolbar-segment-indicator-color: var(--md-primary);
+    }
+
+    .ios {
+      --ion-toolbar-segment-background: var(--tp-surface);
+      --ion-toolbar-segment-color-checked: var(--md-onPrimary);
+      --ion-toolbar-segment-indicator-color: var(--md-primary);
+      --ion-backdrop-opacity: 0.5;
+
+      ion-note {
+        color: var(--tp-text-3);
+      }
+    }
+  }
+}
