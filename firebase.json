@@ -6,38 +6,22 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [
+    "redirects": [
       {
         "source": "/catandice",
-        "destination": "/catandice/index.html"
+        "destination": "https://catandice.tallypad.net",
+        "type": 301
       },
       {
         "source": "/catandice/**",
-        "destination": "/catandice/index.html"
-      },
+        "destination": "https://catandice.tallypad.net/:splat",
+        "type": 301
+      }
+    ],
+    "rewrites": [
       {
         "source": "**",
         "destination": "/index.html"
-      }
-    ],
-    "headers": [
-      {
-        "source": "/catandice/**",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "no-cache"
-          }
-        ]
-      },
-      {
-        "source": "/catandice/**/*.@(js|css|webp|png|jpg|svg|ico|woff2)",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "max-age=31536000"
-          }
-        ]
       }
     ]
   }

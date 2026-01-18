@@ -34,11 +34,6 @@
                 "input": "src/assets",
                 "output": "assets"
               },
-              {
-                "glob": "**/*",
-                "input": "../catan-dice/www",
-                "output": "/"
-              },
               "src/manifest.webmanifest"
             ],
             "styles": ["src/global.scss", "src/theme/variables.scss"],
