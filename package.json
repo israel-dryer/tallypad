@@ -1,6 +1,6 @@
 {
   "name": "tallypad",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "author": "Israel Dryer",
   "homepage": "https://tallypad.net/",
   "scripts": {
@@ -13,9 +13,9 @@
     "version:patch": "node scripts/bump-version.js patch",
     "version:minor": "node scripts/bump-version.js minor",
     "version:major": "node scripts/bump-version.js major",
-    "deploy": "node scripts/bump-version.js patch && ng build",
-    "deploy:minor": "node scripts/bump-version.js minor && ng build",
-    "deploy:major": "node scripts/bump-version.js major && ng build"
+    "deploy": "node scripts/bump-version.js patch && ng build && firebase deploy",
+    "deploy:minor": "node scripts/bump-version.js minor && ng build && firebase deploy",
+    "deploy:major": "node scripts/bump-version.js major && ng build && firebase deploy"
   },
   "private": true,
   "dependencies": {
