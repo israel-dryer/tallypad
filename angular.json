@@ -36,7 +36,7 @@
               },
               {
                 "glob": "**/*",
-                "input": "src/sub-apps",
+                "input": "../catan-dice/www",
                 "output": "/"
               },
               "src/manifest.webmanifest"

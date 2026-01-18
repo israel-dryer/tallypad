@@ -1,6 +1,7 @@
 {
   "name": "Tallypad",
   "short_name": "Tallypad",
+  "version": "0.0.1",
   "description": "Tallypad - Your app hub",
   "start_url": "/",
   "display": "standalone",

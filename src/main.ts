@@ -1,8 +1,10 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
 import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
-import { isDevMode } from '@angular/core';
+import { isDevMode, InjectionToken } from '@angular/core';
 import { provideServiceWorker } from '@angular/service-worker';
+
+export const APP_VERSION = new InjectionToken<string>('APP_VERSION');
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 
@@ -16,6 +18,7 @@ const analytics = getAnalytics(firebaseApp);
 
 bootstrapApplication(AppComponent, {
   providers: [
+    {provide: APP_VERSION, useValue: '0.0.1'},
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
     provideRouter(routes, withPreloading(PreloadAllModules)),
