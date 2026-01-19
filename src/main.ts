@@ -17,7 +17,7 @@ const analytics = getAnalytics(firebaseApp);
 
 bootstrapApplication(AppComponent, {
   providers: [
-    {provide: APP_VERSION, useValue: '0.2.10'},
+    {provide: APP_VERSION, useValue: '0.3.0'},
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
     provideRouter(routes, withPreloading(PreloadAllModules)),

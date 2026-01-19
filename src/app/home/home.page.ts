@@ -51,6 +51,13 @@ export class HomePage {
       description: 'Dice roller and stats tracker for Catan',
       icon: 'assets/launcher-icons/catan-dice.png',
       url: 'https://catandice.tallypad.net'
+    },
+    {
+      id: 'greed',
+      name: 'Greed',
+      description: 'Score tracker for the Greed dice game.',
+      icon: 'assets/launcher-icons/greed.png',
+      url: 'https://greed.tallypad.net'
     }
   ];
 
