@@ -1,20 +1,51 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Tallypad</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Tallypad</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <!-- Hero Section with Brand -->
+  <div class="tp-hero">
+    <div class="tp-hero-icon">
+      <img src="assets/app-icons/branded-icon.png" alt="Tallypad" />
+    </div>
+    <p class="tp-hero-text">
+      Your collection of game companions. Track scores, roll dice, and keep stats for your favorite tabletop games.
+    </p>
+  </div>
+
+  <!-- Apps Section -->
+  <div class="tp-section">
+    <ion-list class="tp-app-list" lines="none">
+      @for (app of apps; track app.id) {
+        <ion-item
+          class="tp-app-item ion-activatable"
+          button
+          [detail]="false"
+          (click)="launchApp(app)">
+          <ion-avatar slot="start" class="tp-app-icon">
+            <img [src]="app.icon" [alt]="app.name" />
+          </ion-avatar>
+          <ion-label>
+            <h3>{{ app.name }}</h3>
+            <p>{{ app.description }}</p>
+          </ion-label>
+          <ion-icon name="chevron-forward" slot="end" class="tp-chevron"></ion-icon>
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-item>
+      }
+    </ion-list>
+  </div>
+
+  <!-- Footer -->
+  <div class="tp-footer">
+    <ion-note>More apps coming soon</ion-note>
   </div>
 </ion-content>
