@@ -1,8 +1,7 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
 import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
-import { isDevMode, InjectionToken } from '@angular/core';
-import { provideServiceWorker } from '@angular/service-worker';
+import { InjectionToken } from '@angular/core';
 
 export const APP_VERSION = new InjectionToken<string>('APP_VERSION');
 import { initializeApp } from 'firebase/app';
@@ -18,13 +17,42 @@ const analytics = getAnalytics(firebaseApp);
 
 bootstrapApplication(AppComponent, {
   providers: [
-    {provide: APP_VERSION, useValue: '0.2.8'},
+    {provide: APP_VERSION, useValue: '0.2.10'},
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
     provideRouter(routes, withPreloading(PreloadAllModules)),
-    provideServiceWorker('ngsw-worker.js', {
-      enabled: !isDevMode(),
-      registrationStrategy: 'registerWhenStable:30000'
-    }),
   ],
+}).then(() => {
+  // Register service worker for PWA
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/ngsw-worker.js')
+      .then(registration => {
+        console.log('Service worker registered');
+
+        // Check for updates on page load
+        registration.update();
+
+        // Listen for new service worker installing
+        registration.addEventListener('updatefound', () => {
+          const newWorker = registration.installing;
+          if (newWorker) {
+            newWorker.addEventListener('statechange', () => {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                // New version available, reload to update
+                console.log('New version available, reloading...');
+                window.location.reload();
+              }
+            });
+          }
+        });
+      })
+      .catch(err => {
+        console.error('Service worker registration failed:', err);
+      });
+
+    // Handle controller change (when new SW takes over)
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      window.location.reload();
+    });
+  }
 });

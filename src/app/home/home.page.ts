@@ -14,6 +14,7 @@ import {
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { chevronForward } from 'ionicons/icons';
+import { version } from '../../../package.json';
 
 interface LauncherApp {
   id: string;
@@ -42,6 +43,7 @@ interface LauncherApp {
   ],
 })
 export class HomePage {
+  version = version;
   apps: LauncherApp[] = [
     {
       id: 'catan-dice',
